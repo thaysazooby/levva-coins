@@ -1,10 +1,9 @@
-import { AuthLayout } from "../../layouts/AuthLayout";
+import { HomeWrapper } from "./styles";
 
 export function Home() {
-    return(
-        //authlayout permite imbutir configurações em todos os seus descendentes
-        <AuthLayout title="" subtitle="">
-            <p>Home</p>
-        </AuthLayout>
-    );
+    return <HomeWrapper>
+        <p>Teste 1</p>
+        <p>Teste 2</p>
+        <p>Teste 3</p>
+    </HomeWrapper>
 }
