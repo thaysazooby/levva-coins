@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-import LevvaCoinsLogo from "../../assets/logo.svg";
+import levvaCoinsLogo from "../../assets/logo.svg";
 import { AuthBackground, AuthContent, AuthWrapper } from "./styles";
 
 //tornando dinâmicas as propriedades com o authlayout
@@ -15,7 +15,7 @@ export function AuthLayout({ title, subtitle, children }: AuthLayoutProps) {
     <AuthBackground>
       <AuthWrapper>
         <header>
-          <img src={LevvaCoinsLogo} alt="Marca Levva Coins" />
+          <img src={levvaCoinsLogo} alt="Levva Coins" />
         </header>
 
         <AuthContent>
