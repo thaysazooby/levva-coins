@@ -9,7 +9,7 @@ export const SummaryContainer = styled.section`
   padding: 0 1.5rem;
 
   display: grid;
-  grid-template-columns: 23rem 23rem 23rem;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 1rem;
   margin-top: -5rem;
 `;
