@@ -1,14 +1,16 @@
 import styled from "styled-components";
 
 export const HeaderContainer = styled.header`
-     background: ${props => props.theme["gray-600"]};
+     background: linear-gradient( to bottom, ${(props) => props.theme.black}, ${(props) => props.theme["gray-600"]});
      padding: 2.5rem 0 7.5rem;
 
-     grid-column-start: 2;
-     grid-column-end: 3;
+     grid-column-start: 1;
+     grid-column-end: 4;
 
      display: grid;
      grid-template-columns: 1fr 70rem 7rem 1fr;
+
+     border-bottom: 1px solid ${(props) => props.theme["yellow-500"]}30;
 `;
 
 export const HeaderContent = styled.div`
@@ -71,8 +73,9 @@ export const UserAvatar = styled.img`
     border: 2px solid transparent;
     box-shadow: 0px 0px 10px 10px #00000010;
 
-    grid-column: 4 / 5;
-    align-items: flex-end;
+    grid-column: 3 / 4;
+    display: flex;
+    justify-self: flex-end;
 
     transition: all 0.3s;
 
