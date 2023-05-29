@@ -1,17 +1,19 @@
 import styled from "styled-components";
 
 export const HomeWrapper = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 77em 1fr;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 `;
 
 export const TransactionsContainer = styled.main`
-  grid-column: 2 / 3;
-
   width: 100%;
   max-width: 1120px;
-  margin: 1rem auto 0;
-  padding: 0 1.5rem;
+  margin: 1.5rem auto 0;
+
+  @media only screen and (max-width: 1440px) {
+    max-width: 1024px;
+  }
 `;
 
 export const TransactionsTable = styled.table`

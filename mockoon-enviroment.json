@@ -1,0 +1,107 @@
+{
+  "uuid": "298083ca-cd47-4f5a-ae8e-23a2f0d74c61",
+  "lastMigration": 27,
+  "name": "Mockoon enviroment",
+  "endpointPrefix": "api",
+  "latency": 750,
+  "port": 3333,
+  "hostname": "",
+  "folders": [
+    {
+      "uuid": "a3d14cbb-252a-4366-99ab-a58fc35de3fe",
+      "name": "Users",
+      "collapsed": false,
+      "children": [
+        {
+          "type": "route",
+          "uuid": "4a95d195-9bcc-48e4-83cb-90087ce96894"
+        }
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "uuid": "4a95d195-9bcc-48e4-83cb-90087ce96894",
+      "type": "http",
+      "documentation": "Create one user",
+      "method": "post",
+      "endpoint": "user",
+      "responses": [
+        {
+          "uuid": "2ba6c83f-9032-4cbc-8c67-320921a3534a",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "User created",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "286a7f96-dd72-4a17-aee0-62ebf512f36e",
+          "body": "{\n  \"hasError\": true,\n  \"message\": \"Esse email já existe\"\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Emaill exists",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "rootChildren": [
+    {
+      "type": "folder",
+      "uuid": "a3d14cbb-252a-4366-99ab-a58fc35de3fe"
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}
