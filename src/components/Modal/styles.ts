@@ -30,3 +30,4 @@ export const CloseButton = styled(Dialog.Close)`
   line-height: 0;
   color: ${(props) => props.theme["gray-400"]};
 `;
+

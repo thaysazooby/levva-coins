@@ -1,8 +1,37 @@
+import { useStore } from "effector-react";
+
+import TransactionStore from "../../stores/TransactionStore/TransactionStore";
+
 import { ArrowCircleDown, ArrowCircleUp, CurrencyDollar } from "phosphor-react";
 import { SummaryCard, SummaryContainer } from "./styles";
 import { defaultTheme } from "../../styles/defaultTheme";
 
 export function Summary() {
+  const { transactions } = useStore(TransactionStore);
+
+  const summary = transactions.reduce(
+    (acc, transaction) => {
+      if (transaction.type === 0) {
+        acc.deposits += transaction.amount;
+        acc.total += transaction.amount;
+      } else {
+        acc.withdraws += transaction.amount;
+        acc.total -= transaction.amount;
+      }
+      return acc;
+    },
+    {
+      deposits: 0,
+      withdraws: 0,
+      total: 0,
+    }
+  );
+
+  const money = new Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency:"BRL",
+  })
+
   return (
     <SummaryContainer>
       <SummaryCard>
@@ -11,7 +40,7 @@ export function Summary() {
           <ArrowCircleUp size={32} color={defaultTheme["yellow-500"]} />
         </header>
 
-        <strong>R$ 17.400,00</strong>
+        <strong>{money.format(summary.deposits)}</strong>
       </SummaryCard>
 
       <SummaryCard>
@@ -20,7 +49,7 @@ export function Summary() {
           <ArrowCircleDown size={32} color={defaultTheme["red-500"]} />
         </header>
 
-        <strong>R$ 17.000,00</strong>
+        <strong>{money.format(summary.withdraws)}</strong>
       </SummaryCard>
 
       <SummaryCard variant="balance">
@@ -29,7 +58,7 @@ export function Summary() {
           <CurrencyDollar size={32} color={defaultTheme["yellow-500"]} />
         </header>
 
-        <strong>R$ 400,00</strong>
+        <strong>{money.format(summary.total)}</strong>
       </SummaryCard>
     </SummaryContainer>
   );

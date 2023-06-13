@@ -2,6 +2,8 @@ import * as RadioGroup from "@radix-ui/react-radio-group";
 
 import styled, { createGlobalStyle } from "styled-components";
 
+import { Link } from "react-router-dom"
+
 export const GlobalStyle = createGlobalStyle`
 *{
     margin: 0;
@@ -28,7 +30,7 @@ body, input, button {
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: start;
 
   padding-top: 1rem;
 `;
@@ -46,6 +48,11 @@ export const FormInput = styled.input`
   & + & {
     margin-top: 1rem;
   }
+`;
+
+export const FormError = styled.span`
+  color: ${(props) => props.theme["red-500"]};
+  margin: 0.5rem 0 1rem;
 `;
 
 export const FormButton = styled.button`
@@ -67,6 +74,25 @@ export const FormButton = styled.button`
     border: 1px solid ${(props) => props.theme["yellow-500"]};
   }
 `;
+
+export const FormLink = styled(Link)`
+  align-self: flex-end;
+  margin-top: 1rem;
+  color: ${(props) => props.theme["yellow-500"]};
+`
+
+export const FormSelect = styled.select`
+  font: 400 1rem "Roboto", sans-serif;
+  background:${(props) => props.theme.black};
+  color: ${(props) => props.theme["white"]};
+  boder: 0;
+
+  padding: 1rem;
+  border-radius: 6px;
+  width: 100%;
+
+  margin: 1rem auto;
+`
 
 interface TransactionTypeButtonProps {
   variant: "income" | "outcome";

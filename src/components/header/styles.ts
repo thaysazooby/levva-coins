@@ -1,3 +1,5 @@
+import * as Dialog from "@radix-ui/react-dialog";
+
 import styled, { css } from "styled-components";
 
 export const HeaderContainer = styled.div`
@@ -12,7 +14,7 @@ export const HeaderContainer = styled.div`
   border-bottom: 1px solid ${(props) => props.theme["yellow-500"]}30;
 `;
 
-export const HeaderContent = styled.div`
+export const HeaderContent = styled.header`
   display: flex;
   justify-content: space-between;
   padding-top: 2.5rem;
@@ -25,15 +27,15 @@ export const HeaderContent = styled.div`
   }
 
   @media only screen and (max-width: 1440px) {
-    position: 1024px;
+    max-width: 1024px;
   }
 `;
 
 export const NewCategoryButton = styled.button`
   height: 50px;
-  border: 1px solid transparent;
   background: ${(props) => props.theme["gray-500"]};
-  color: ${(props) => props.theme["white"]};
+  border: 1px solid transparent;
+  color: ${(props) => props.theme.white};
   font-weight: bold;
 
   border-radius: 6px;
@@ -104,4 +106,56 @@ export const UserAvatar = styled.img<UserAvatarProps>`
             right: -6rem;
           }
         `}
+`;
+
+export const SignOutButton = styled.button`
+  background: ${(props) => props.theme["gray-600"]};
+  color: ${(props) => props.theme["white"]};
+  width: 100%;
+
+  padding: 1rem 0;
+  margin-top: 1.5rem;
+
+  border-radius: 6px;
+  border: 1px solid ${(props) => props.theme["yellow-300"]};
+  font-weight: bold;
+
+  transition: all 0.5s ease;
+
+  &:hover {
+    cursor: pointer;
+    background: ${(props) => props.theme["yellow-500"]};
+    border: 1px solid ${(props) => props.theme["yellow-500"]};
+    color: ${(props) => props.theme["black"]};
+  }
+`;
+
+export const Overlay = styled(Dialog.Overlay)`
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  inset: 0;
+  background: #00000075;
+`;
+
+export const Content = styled(Dialog.Content)`
+  min-width: 32rem;
+  border-radius: 6px;
+  padding: 2.5rem 3rem;
+  background: ${(props) => props.theme["gray-600"]};
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`;
+
+export const CloseButton = styled(Dialog.Close)`
+  cursor: pointer;
+  position: absolute;
+  background: transparent;
+  border: 0;
+  top: 1.5rem;
+  right: 1.5rem;
+  line-height: 0;
+  color: ${(props) => props.theme["gray-400"]};
 `;
