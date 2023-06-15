@@ -23,7 +23,7 @@
 
 ## Sobre
 
-O Levva Coins é um projeto desenvolvido no programa Newbies da Levva, trata-se de um controle pessoal de finanças que cadastra transações de entrada e saída, totaliza em cards e apresenta os detalhes das transações em uma tabela paginada. Após cumprir as trilhas de conhecimentos de back-end (C# .Net) e front-end(React) os participantes do Newbie foram desafiados a realizar a intregação das duas partes e desenvolver 3 tarefas: criar uma busca por transações/categorias; retornar todos os dados de uma nova categoria ao ser cadastrada; retornar todos os dados de uma nova transação ao ser cadastrada.
+O Levva Coins é um projeto desenvolvido no programa Newbies da Levva, trata-se de um controle pessoal de finanças que cadastra transações de entrada e saída, totaliza em cards e apresenta os detalhes das transações em uma tabela paginada. Após cumprir as trilhas de conhecimentos de back-end (C# .Net) e front-end(React), com orientação de Marcelo Pinheiro, Sidney Borges, Jemima Luz e Lucas Alves, os participantes do Newbie foram desafiados a realizar a intregação das duas partes e desenvolver 3 tarefas: criar uma busca por transações/categorias; retornar todos os dados de uma nova categoria ao ser cadastrada; retornar todos os dados de uma nova transação ao ser cadastrada.
 
 ## Features
 
