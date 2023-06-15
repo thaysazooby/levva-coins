@@ -149,13 +149,6 @@
           "rules": [
             {
               "target": "body",
-              "modifier": "email",
-              "value": "",
-              "invert": false,
-              "operator": "null"
-            },
-            {
-              "target": "body",
               "modifier": "password",
               "value": "",
               "invert": false,
@@ -187,7 +180,7 @@
       "responses": [
         {
           "uuid": "e9d7adec-3a23-453e-9bcc-2d56fc314935",
-          "body": "",
+          "body": "  {\n    \"categoryId\": \"{{guid}}\",\n    \"description\": \"Nova categoria\"\n  }",
           "latency": 0,
           "statusCode": 201,
           "label": "Category created",
@@ -417,7 +410,7 @@
       "responses": [
         {
           "uuid": "e02c4ada-c756-4283-8266-60d8edc1f163",
-          "body": "",
+          "body": "{\n\t  \"description\": \"Nova transação\",\n\t  \"amount\": {{toFixed (float 10 100) 2}},\n\t  \"type\": \"{{oneOf (array 'deposit' 'credit')}}\",\n\t  \"transactionId\": \"{{guid}}\",\n\t  \"category\": {\n\t    \"categoryId\": \"{{guid}}\",\n\t    \"description\": \"{{faker 'commerce.department'}}\"\n\t  },\n\t  \"createdAt\": \"{{now 'dd/MM/YYYY'}}\"\n}",
           "latency": 0,
           "statusCode": 201,
           "label": "Transaction created",

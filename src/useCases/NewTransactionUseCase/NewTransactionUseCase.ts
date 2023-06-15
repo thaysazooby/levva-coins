@@ -1,39 +1,39 @@
 import { TransactionService } from "../../services/TransactionService/TransactionService";
 
 import {
-    loadTransaction,
-    loadCreateTransactionDone,
-    loadTransactionFail,
+  loadTransaction,
+  loadCreateTransactionDone,
+  loadTransactionFail,
 } from "../../stores/TransactionStore/TransactionEvents";
 
-import { NewTransactionParams } from "../../domains/transaction";
+import { NewTransactionParams, TransactionValues } from "../../domains/transaction";
 import { RequestError } from "../../domains/requestError";
 
 const execute = async ({
+  description,
+  amount,
+  type,
+  categoryId,
+}: NewTransactionParams): Promise<void> => {
+  loadTransaction();
+
+  return TransactionService.createTransaction({
     description,
     amount,
     type,
-    transactionId,
-}: NewTransactionParams): Promise<void> => {
-    loadTransaction();
-
-    return TransactionService.createTransaction({
-        description,
-        amount,
-        type,
-        transactionId,
-    })
-    .then(() => {
-        loadCreateTransactionDone();
+    categoryId,
+  })
+    .then((transaction: TransactionValues) => {
+      loadCreateTransactionDone(transaction);
     })
     .catch(({ hasError, message }: RequestError) => {
-        loadTransactionFail({ hasError, message });
-        throw new Error();
-    })
+      loadTransactionFail({ hasError, message });
+      throw new Error();
+    });
 };
 
 const NewTransactionUseCase = {
-    execute,
+  execute,
 };
 
 export default NewTransactionUseCase;

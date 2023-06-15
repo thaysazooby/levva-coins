@@ -13,15 +13,15 @@ const createTransaction = async ({
   description,
   amount,
   type,
-  transactionId,
-}: NewTransactionParams): Promise<void> => {
+  categoryId,
+}: NewTransactionParams): Promise<any> => {
   return Api.post({
     url: "/transaction",
     body: {
       description,
       amount,
       type,
-      transactionId,
+      categoryId,
     },
   })
     .then((response) => {
@@ -44,12 +44,21 @@ const getTransactions = async (): Promise<TransactionValues[]> => {
     });
 };
 
-export const getTransactionBySearch = async ({
-  busca,
-}: SearchFormProps): Promise<TransactionValues[]> => {
+const getTransactionBySearch = async ({busca}: SearchFormProps): Promise<TransactionValues[]> => {
+  if(busca === null || busca.length <= 0) getTransactions();
+  
   return Api.get({
     url: "/transaction",
+    config:{
+      params: {
+        search: busca
+      }
+    }
   }).then((response) => {
+    //console.log(JSON.stringify(busca))
+
+    return response.data;
+    /*
     return response.data.filter((transaction: any) => {
       transaction.description.toUpperCase.includes(
         JSON.stringify(busca).toUpperCase()
@@ -57,7 +66,10 @@ export const getTransactionBySearch = async ({
         transaction.category.description
           .toUpperCase()
           .includes(JSON.stringify(busca).toUpperCase());
-    });
+    });*/
+  }).catch((error: AxiosError<RequestError>) => {
+    throw error.response?.data;
+    
   });
 };
 

@@ -6,8 +6,7 @@ import { MagnifyingGlass } from "phosphor-react";
 
 import { SearchFormContainer } from "./styles";
 import { FormInput } from "../../styles/global";
-
-import { getTransactionBySearch } from "../../services/TransactionService/TransactionService"
+import GetTransactionsBySearchUseCase from "../../useCases/GetTransactionsBySearchUseCase/GetTransactionsBySearchUseCase";
 
 export interface SearchFormProps {
   busca: string;
@@ -15,31 +14,28 @@ export interface SearchFormProps {
 
 const formSchema = yup
   .object({
-    busca: yup
-      .string()
-      .required("Digite uma palavra."),
+    busca: yup.string().required("Digite uma palavra."),
   })
   .required();
 
 export function SearchForm() {
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<SearchFormProps>({
+  const { register, handleSubmit } = useForm<SearchFormProps>({
     resolver: yupResolver(formSchema),
   });
 
   function handleSearch({ busca }: SearchFormProps) {
-    //console.log({ busca })
-    
-    getTransactionBySearch({busca})
+    //console.log({ busca });
+
+    GetTransactionsBySearchUseCase.execute({ busca });
   }
 
   return (
     <SearchFormContainer onSubmit={handleSubmit(handleSearch)}>
-      <FormInput {...register("busca")} type="text" placeholder="Busque por transacões" />
+      <FormInput
+        {...register("busca")}
+        type="text"
+        placeholder="Busque por transacões"
+      />
 
       <button type="submit">
         <MagnifyingGlass size={20} />

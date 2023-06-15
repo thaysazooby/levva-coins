@@ -20,7 +20,7 @@ Axios.interceptors.request.use((config) => {
 });
 
 const Api = {
-  get: ({ url, body }: IRequest): Promise<any> => Axios.get(`${getApiHost()}${url}`, body),
+  get: ({ url, config }: IRequest): Promise<any> => Axios.get(`${getApiHost()}${url}`, config),
 
   post: ({ url, body, config }: IRequest): Promise<any> =>
     Axios.post(`${getApiHost()}${url}`, body, config),

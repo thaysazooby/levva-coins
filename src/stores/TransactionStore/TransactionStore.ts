@@ -26,9 +26,9 @@ const TransactionStore = createStore<TransactionState>(initialState)
   .on(loadCreateTransactionDone, (state, data) => ({
     ...state,
     isLoading: false,
-    transactions: [data.unshift(), ...state.transactions],
     hasError: false,
     errorMessage: "",
+    transactions: [data, ...state.transactions],
   }))
   .on(loadTransactionDone, (_, data) => ({
     isLoading: false,

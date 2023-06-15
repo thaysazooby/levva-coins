@@ -24,6 +24,16 @@ export function Home() {
     currency: "BRL",
   });
 
+  const data = new Intl.DateTimeFormat("pt-BR", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: false,
+  });
+
   useEffect(() => {
     GetTransactionsUseCase.execute();
   }, []);
@@ -38,15 +48,17 @@ export function Home() {
       <TransactionsContainer>
         <TransactionsTable>
           <thead>
-            <td>Descrição</td>
-            <td>Preço</td>
-            <td>Categoria</td>
-            <td>Data</td>
+            <tr>
+              <td>Descrição</td>
+              <td>Preço</td>
+              <td>Categoria</td>
+              <td>Data</td>
+            </tr>
           </thead>
           <tbody>
             {transactions.length > 0 &&
               transactions.map((transaction) => (
-                <tr>
+                <tr key={transaction.id}>
                   <td width="50%">{transaction.description}</td>
                   <td>
                     <PriceHighLight
@@ -56,7 +68,7 @@ export function Home() {
                     </PriceHighLight>
                   </td>
                   <td>{transaction.category.description}</td>
-                  <td>1{transaction.createdAt}</td>
+                  <td>{data.format(new Date(transaction.createdAt))}</td>
                 </tr>
               ))}
           </tbody>
